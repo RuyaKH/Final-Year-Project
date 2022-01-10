@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PlayerMovement : MonoBehaviour 
 {
 	public int movementspeed = 10;
+	public Ball ball;
 	// Use this for initialization
 	void Start()
 	{
@@ -14,15 +15,23 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKey(KeyCode.A))
+		if (ball.isMoving == false)
 		{
-			transform.Translate(Vector3.left * movementspeed * Time.deltaTime);
+			if (Input.GetKey(KeyCode.A))
+			{
+				transform.Translate(Vector3.left * movementspeed * Time.deltaTime);
+			}
+			if (Input.GetKey(KeyCode.D))
+			{
+				transform.Translate(Vector3.right * movementspeed * Time.deltaTime);
+			}
 		}
-		if (Input.GetKey(KeyCode.D))
-		{
-			transform.Translate(Vector3.right * movementspeed * Time.deltaTime);
+		else if (ball.isMoving == true)
+        {
+			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 		}
-	}
+
+    }
 
     void OnColliderEnter2D(Collider2D collider)
     {

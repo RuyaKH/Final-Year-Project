@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
     private Vector2 startPosition;
     private Vector2 endPosition;
     public Rigidbody2D physics;
+    public bool isMoving;
 
     void Awake()
     {
@@ -17,6 +18,7 @@ public class Ball : MonoBehaviour
 	void Start()
     {
         physics.isKinematic = true;
+        isMoving = false;
     }
 
     void Update()
@@ -32,11 +34,10 @@ public class Ball : MonoBehaviour
             endPosition = getMousePosition();
             Vector2 power = startPosition - endPosition;
             physics.isKinematic = false;
-            bm.movementspeed = 0;
+            isMoving = true;
             physics.AddForce(power * force, ForceMode2D.Force);
             Debug.Log(physics.velocity);
         }
-
     }
 
     private Vector2 getMousePosition()

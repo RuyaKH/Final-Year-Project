@@ -14,7 +14,7 @@ public class KillPlayer : MonoBehaviour
     private GameObject player;
 
     public Rigidbody2D physics;
-    public float movementspeed = 10f;
+    public Ball b;
 
     //trigger to check for 
     void OnTriggerEnter2D(Collider2D collider)
@@ -27,6 +27,8 @@ public class KillPlayer : MonoBehaviour
             player.transform.position = playerCheckpoint.transform.position;
             physics.velocity = Vector2.zero;
             physics.angularVelocity = 0f;
+            physics.transform.rotation = Quaternion.identity;
+            b.isMoving = false;
         }
     }
 }

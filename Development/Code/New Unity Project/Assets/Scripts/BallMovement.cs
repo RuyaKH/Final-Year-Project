@@ -5,22 +5,39 @@ using System.Collections.Generic;
 public class BallMovement : MonoBehaviour 
 {
 	public float movementspeed = 10f;
+    public Rigidbody2D physics;
+    public Ball ball;
     // Use this for initialization
     void Start()
 	{
-        
+
     }
 
 	// Update is called once per frame
 	void Update()
 	{
-        if (Input.GetKey(KeyCode.A))
+        if (ball.isMoving == false)
         {
-            transform.Translate(Vector3.left * movementspeed * Time.deltaTime);
+            movementspeed = 10f;
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Translate(Vector3.left * movementspeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(Vector3.right * movementspeed * Time.deltaTime);
+            }
         }
-        if (Input.GetKey(KeyCode.D))
+        else if (ball.isMoving == true)
         {
-            transform.Translate(Vector3.right * movementspeed * Time.deltaTime);
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Translate(Vector3.zero * movementspeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(Vector3.zero * movementspeed * Time.deltaTime);
+            }
         }
 	}
 
