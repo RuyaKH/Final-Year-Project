@@ -6,10 +6,11 @@ public class PlayerMovement : MonoBehaviour
 {
 	public int movementspeed = 10;
 	public Ball ball;
+    private InputManager inputManager;
 	// Use this for initialization
 	void Start()
 	{
-
+        inputManager = InputManager.instance;
 	}
 
 	// Update is called once per frame
@@ -17,11 +18,11 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (ball.isMoving == false)
 		{
-			if (Input.GetKey(KeyCode.A))
+			if (inputManager.GetKey(KeybindingActions.Left))
 			{
 				transform.Translate(Vector3.left * movementspeed * Time.deltaTime);
 			}
-			if (Input.GetKey(KeyCode.D))
+			if (inputManager.GetKey(KeybindingActions.Right))
 			{
 				transform.Translate(Vector3.right * movementspeed * Time.deltaTime);
 			}

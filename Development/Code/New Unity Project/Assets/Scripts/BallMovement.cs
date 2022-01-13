@@ -7,10 +7,11 @@ public class BallMovement : MonoBehaviour
 	public float movementspeed = 10f;
     public Rigidbody2D physics;
     public Ball ball;
+    private InputManager inputManager;
     // Use this for initialization
     void Start()
 	{
-
+        inputManager = InputManager.instance;
     }
 
 	// Update is called once per frame
@@ -19,22 +20,22 @@ public class BallMovement : MonoBehaviour
         if (ball.isMoving == false)
         {
             movementspeed = 10f;
-            if (Input.GetKey(KeyCode.A))
+            if (inputManager.GetKey(KeybindingActions.Left))
             {
                 transform.Translate(Vector3.left * movementspeed * Time.deltaTime);
             }
-            if (Input.GetKey(KeyCode.D))
+            if (inputManager.GetKey(KeybindingActions.Right))
             {
                 transform.Translate(Vector3.right * movementspeed * Time.deltaTime);
             }
         }
         else if (ball.isMoving == true)
         {
-            if (Input.GetKey(KeyCode.A))
+            if (inputManager.GetKey(KeybindingActions.Left))
             {
                 transform.Translate(Vector3.zero * movementspeed * Time.deltaTime);
             }
-            if (Input.GetKey(KeyCode.D))
+            if (inputManager.GetKey(KeybindingActions.Right))
             {
                 transform.Translate(Vector3.zero * movementspeed * Time.deltaTime);
             }
