@@ -18,6 +18,6 @@ MonoBehaviour:
   - keybindingAction: 1
     keyCode: 27
   - keybindingAction: 2
-    keyCode: 106
+    keyCode: 97
   - keybindingAction: 3
-    keyCode: 108
+    keyCode: 100

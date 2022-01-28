@@ -534,15 +534,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1198946478}
-  shootForce: 300
+  shootForce: 0
   upwardForce: 0
-  timeBetweenShooting: 0.1
-  spread: 3
-  reloadTime: 1.5
+  timeBetweenShooting: 0
+  spread: 0
+  reloadTime: 0
   timeBetweenShots: 0
-  magazineSize: 100
-  bulletsPerTap: 1
-  allowButtonHold: 1
+  magazineSize: 0
+  bulletsPerTap: 0
+  allowButtonHold: 0
   fpsCamera: {fileID: 1062865423}
   attackPoint: {fileID: 1616227485}
   allowInvoke: 1
@@ -1038,6 +1038,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.2264151
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.0077463547
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
 --- !u!1 &2019391799
@@ -1392,6 +1408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2100625760}
   - component: {fileID: 2100625759}
+  - component: {fileID: 2100625761}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1426,3 +1443,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2100625761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100625758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33e8da7434d7a14dba221ebd229a777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pistol: {fileID: 973675137}
+  bullet: {fileID: 1198946478}
+  bulletCheckpoint: {fileID: 1616227484}
+  isFiring: 0
+  physics: {fileID: 1198946480}
+  force: 10
