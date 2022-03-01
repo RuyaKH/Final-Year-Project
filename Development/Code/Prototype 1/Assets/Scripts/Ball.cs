@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
     private Vector2 endPosition;
     public Rigidbody2D physics;
     public bool isMoving;
+    public bool isClicked = false;
 
     void Awake()
     {
@@ -29,14 +30,16 @@ public class Ball : MonoBehaviour
             //Debug.Log(startPosition);
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && !isClicked)
         {
+            isClicked = true;
             endPosition = getMousePosition();
             Vector2 power = startPosition - endPosition;
             physics.isKinematic = false;
             isMoving = true;
             physics.AddForce(power * force, ForceMode2D.Force);
             Debug.Log(physics.velocity);
+            //Cursor.lockState = CursorLockMode.Confined;
         }
     }
 

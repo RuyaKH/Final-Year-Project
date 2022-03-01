@@ -1,20 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class PlayerMovement : MonoBehaviour 
 {
 	public int movementspeed = 10;
 	public Ball ball;
     private InputManager inputManager;
-	// Use this for initialization
+
+	public bool isThrowing;
+
+	public SpriteRenderer spriteRenderer;
+	public Sprite[] spriteArray;
+
+	//void ChangeSprite()
+ //   {
+	//	spriteRenderer.sprite = spriteArray[0];
+ //   }
+
 	void Start()
 	{
         inputManager = InputManager.instance;
 	}
 
-	// Update is called once per frame
-	void Update()
+    void Update()
 	{
 		if (ball.isMoving == false)
 		{
@@ -26,13 +36,18 @@ public class PlayerMovement : MonoBehaviour
 			{
 				transform.Translate(Vector3.right * movementspeed * Time.deltaTime);
 			}
+			if (Input.GetMouseButtonDown(0))
+			{
+				//gameObject.GetComponent<Animator>().Play("Player Aim");
+				spriteRenderer.sprite = spriteArray[1];
+			}
 		}
 		else if (ball.isMoving == true)
         {
 			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+			spriteRenderer.sprite = spriteArray[2];
 		}
-
-    }
+	}
 
     void OnColliderEnter2D(Collider2D collider)
     {

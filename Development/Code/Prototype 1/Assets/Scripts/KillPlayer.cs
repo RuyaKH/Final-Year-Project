@@ -29,6 +29,7 @@ public class KillPlayer : MonoBehaviour
             physics.angularVelocity = 0f;
             physics.transform.rotation = Quaternion.identity;
             b.isMoving = false;
+            b.isClicked = false;
         }
     }
 }
