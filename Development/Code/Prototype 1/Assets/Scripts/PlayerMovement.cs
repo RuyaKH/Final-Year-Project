@@ -14,11 +14,6 @@ public class PlayerMovement : MonoBehaviour
 	public SpriteRenderer spriteRenderer;
 	public Sprite[] spriteArray;
 
-	//void ChangeSprite()
- //   {
-	//	spriteRenderer.sprite = spriteArray[0];
- //   }
-
 	void Start()
 	{
         inputManager = InputManager.instance;
@@ -28,7 +23,8 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (ball.isMoving == false)
 		{
-			if (inputManager.GetKey(KeybindingActions.Left))
+            spriteRenderer.sprite = spriteArray[0];
+            if (inputManager.GetKey(KeybindingActions.Left))
 			{
 				transform.Translate(Vector3.left * movementspeed * Time.deltaTime);
 			}
