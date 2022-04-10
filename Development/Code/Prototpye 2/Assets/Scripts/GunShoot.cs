@@ -20,7 +20,7 @@ public class GunShoot : MonoBehaviour
 	{
         if (Input.GetButtonDown("Fire1"))
         {
-            transform.Translate(Vector3.forward * movementspeed * Time.deltaTime);
+            transform.Translate(transform.forward * movementspeed * Time.deltaTime);
             //physics.isKinematic = false;
             //physics.AddForce(force, ForceMode.Force);
             //Debug.Log(physics.velocity);

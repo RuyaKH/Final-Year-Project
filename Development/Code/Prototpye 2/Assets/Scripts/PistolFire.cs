@@ -34,11 +34,12 @@ public class PistolFire : MonoBehaviour
 
         if (Input.GetButtonUp("Fire1"))
         {
-            power = new Vector3(1.0f, 1.0f, 1.0f);
+            //power = new Vector3(1.0f, 1.0f, 1.0f);
             isFiring = true;
-            physics.isKinematic = false;
-            physics.AddForce(power * force, ForceMode.Force);
-            Debug.Log(physics.velocity);
+            //physics.isKinematic = false;
+            //physics.AddForce(power * force, ForceMode.Force);
+            //Debug.Log(physics.velocity);
+            transform.Translate(transform.forward * movementspeed * Time.deltaTime);
         }
     }
 
