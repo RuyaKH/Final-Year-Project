@@ -12,6 +12,8 @@ public class PistolFire : MonoBehaviour
     public Rigidbody physics;
     public float force = 10f;
 
+    int movementspeed = 10;
+
     void Awake()
     {
         physics = bullet.GetComponent<Rigidbody>();
@@ -36,7 +38,7 @@ public class PistolFire : MonoBehaviour
         {
             //power = new Vector3(1.0f, 1.0f, 1.0f);
             isFiring = true;
-            //physics.isKinematic = false;
+            physics.isKinematic = false;
             //physics.AddForce(power * force, ForceMode.Force);
             //Debug.Log(physics.velocity);
             transform.Translate(transform.forward * movementspeed * Time.deltaTime);

@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Kill : MonoBehaviour
+public class KillBullet : MonoBehaviour
 {
     [SerializeField]
-    private GameObject cube;
+    private GameObject bullet;
 
     //trigger to check for 
     void OnTriggerEnter(Collider collider)
     {
         Debug.Log(collider.name);
-        if (collider.tag == "bullet")
+        if (collider.tag == "enemy")
         {
-            cube.SetActive(false);
+            bullet.SetActive(false);
         }
     }
 }

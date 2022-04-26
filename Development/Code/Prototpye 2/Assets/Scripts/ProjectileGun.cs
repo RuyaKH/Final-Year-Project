@@ -27,6 +27,13 @@ public class ProjectileGun : MonoBehaviour
     //bug fixing
     public bool allowInvoke = true;
 
+    //animation
+    public bool isFiring = false;
+    public GameObject pistol;
+
+    //text
+    public GameObject reloadDone;
+
     private void Awake()
     {
         //make sure magazine is full
@@ -65,6 +72,12 @@ public class ProjectileGun : MonoBehaviour
 
     private void Shoot()
     {
+        bullet.SetActive(true);
+        if (isFiring == false)
+        {
+            StartCoroutine(FireThePistol());
+        }
+
         readyToShoot = false;
 
         //find the exact hit position using a raycast
@@ -95,7 +108,7 @@ public class ProjectileGun : MonoBehaviour
 
         //add forces to bullet
         currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * shootForce, ForceMode.Impulse);
-        currentBullet.GetComponent<Rigidbody>().AddForce(fpsCamera.transform.up * shootForce, ForceMode.Impulse);
+        currentBullet.GetComponent<Rigidbody>().AddForce(fpsCamera.transform.up * upwardForce, ForceMode.Impulse);
 
         bulletsLeft--;
         bulletsShot++;
@@ -129,5 +142,34 @@ public class ProjectileGun : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         reloading = false;
+        if (reloading == false)
+        {
+            StartCoroutine(ReloadDoneText());
+        }
     }
+    
+    IEnumerator ReloadDoneText()
+    {
+        reloadDone.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        reloadDone.SetActive(false);
+    }
+
+    IEnumerator FireThePistol()
+    {
+        isFiring = true;
+        pistol.GetComponent<Animator>().Play("FirePistol");
+        yield return new WaitForSeconds(0.25f);
+        pistol.GetComponent<Animator>().Play("New State");
+        isFiring = false;
+    }
+
+    //void OnTriggerEnter(Collider collider)
+    //{
+    //    Debug.Log(collider.name);
+    //    if (collider.tag == "enemy")
+    //    {
+    //        Destroy(bullet);
+    //    }
+    //}
 }
