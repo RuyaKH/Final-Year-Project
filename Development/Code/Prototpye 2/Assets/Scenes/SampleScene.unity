@@ -1977,10 +1977,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1198946478}
-  shootForce: 5
+  shootForce: 10
   upwardForce: 1
   timeBetweenShooting: 0.5
-  spread: 1
+  spread: 0.5
   reloadTime: 1
   timeBetweenShots: 0.5
   magazineSize: 5

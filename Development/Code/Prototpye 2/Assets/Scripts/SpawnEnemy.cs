@@ -16,7 +16,8 @@ public class SpawnEnemy : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Q))
+        //if (Input.GetKey(KeyCode.Q))
+        for (int i = 0; i < 20; i++)
             Spawn();
     }
 
