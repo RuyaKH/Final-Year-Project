@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ProjectileGun : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class ProjectileGun : MonoBehaviour
     //text
     public GameObject reloadDone;
 
+    public Button backButton;
+
     private void Awake()
     {
         //make sure magazine is full
@@ -41,9 +44,20 @@ public class ProjectileGun : MonoBehaviour
         readyToShoot = true;
     }
 
+    private void Start()
+    {
+        backButton = backButton.GetComponent<Button>();
+        backButton.onClick.AddListener(onBackButtonClick);
+    }
+
     private void Update()
     {
         MyInput();
+    }
+
+    void onBackButtonClick()
+    {
+        bullet.SetActive(false);
     }
 
     private void MyInput()
@@ -164,12 +178,4 @@ public class ProjectileGun : MonoBehaviour
         isFiring = false;
     }
 
-    //void OnTriggerEnter(Collider collider)
-    //{
-    //    Debug.Log(collider.name);
-    //    if (collider.tag == "enemy")
-    //    {
-    //        Destroy(bullet);
-    //    }
-    //}
 }

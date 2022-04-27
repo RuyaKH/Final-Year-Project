@@ -11,14 +11,17 @@ public class SpawnEnemy : MonoBehaviour
     void Start()
     {
         //cube.transform.Rotate(0, 180, 0);
-        Spawn();
+        for(int i = 0; i < 20; i++)
+        {
+            Spawn();
+        }
     }
 
     void Update()
     {
         //if (Input.GetKey(KeyCode.Q))
-        for (int i = 0; i < 20; i++)
-            Spawn();
+        //for (int i = 0; i < 20; i++)
+            //Spawn();
     }
 
     public void Spawn()
