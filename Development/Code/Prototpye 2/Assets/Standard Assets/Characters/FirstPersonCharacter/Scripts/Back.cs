@@ -13,11 +13,11 @@ public class Back : MonoBehaviour
         back = back.GetComponent<Button>();
     }
 
-    //void Update()
-    //{
-    //    if (CrossPlatformInputManager.GetButtonDown("Cancel"))
-    //        BackMain();
-    //}
+    void Update()
+    {
+        if (CrossPlatformInputManager.GetButtonDown("Cancel"))
+            BackMain();
+    }
 
     public void BackMain()
     {
