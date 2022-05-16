@@ -66,7 +66,7 @@ public class ProjectileGun : MonoBehaviour
         else shooting = Input.GetButtonDown("Fire1");
 
         //reloading
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
+        if (Input.GetButtonDown("Reload") && bulletsLeft < magazineSize && !reloading)
         {
             Reload();
         }

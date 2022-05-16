@@ -11,6 +11,9 @@ public class KeyBindScript : MonoBehaviour
 
     private GameObject currentKey;
 
+    //private Color normal = new Color(39, 171, 249, 255);
+    //private Color selected = new Color(239, 116, 36, 255);
+
     void Start()
     {
         keys.Add("Left", KeyCode.A);
@@ -24,11 +27,11 @@ public class KeyBindScript : MonoBehaviour
     {
         if (Input.GetKeyDown(keys["Left"]))
         {
-            Debug.Log("Left");
+            Debug.Log(keys["Left"]);
         }
         if (Input.GetKeyDown(keys["Right"]))
         {
-            Debug.Log("Right");
+            Debug.Log(keys["Right"]);
         }
     }
 
@@ -37,10 +40,11 @@ public class KeyBindScript : MonoBehaviour
         if (currentKey != null)
         {
             Event e = Event.current;
-            if (e.isKey && e.type == EventType.KeyUp)
+            if (e.isKey)
             {
                 keys[currentKey.name] = e.keyCode;
                 currentKey.transform.GetChild(0).GetComponent<Text>().text = e.keyCode.ToString();
+                //currentKey.GetComponent<Image>().color = normal;
                 currentKey = null;
             }
         }
@@ -48,6 +52,12 @@ public class KeyBindScript : MonoBehaviour
 
     public void ChangeKey(GameObject clicked)
     {
+        //if (currentKey != null)
+        //{
+        //    currentKey.GetComponent<Image>().color = normal;
+        //}
+
         currentKey = clicked;
+        //currentKey.GetComponent<Image>().color = selected;
     }
 }
