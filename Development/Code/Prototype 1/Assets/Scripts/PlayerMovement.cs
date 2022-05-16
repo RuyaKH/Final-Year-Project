@@ -24,19 +24,36 @@ public class PlayerMovement : MonoBehaviour
 		if (ball.isMoving == false)
 		{
             spriteRenderer.sprite = spriteArray[0];
-            if (inputManager.GetKey(KeybindingActions.Left))
+            if (Input.GetKey(GameManager.GM.left))
 			{
 				transform.Translate(Vector3.left * movementspeed * Time.deltaTime);
 			}
-			if (inputManager.GetKey(KeybindingActions.Right))
+            //else
+            //{
+            //    Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), 0);
+            //    movement.Normalize();
+            //    movement *= movementspeed * Time.deltaTime;
+            //    transform.Translate(movement.x, 0f, movement.y);
+            //}
+
+			if (Input.GetKey(GameManager.GM.right))
 			{
 				transform.Translate(Vector3.right * movementspeed * Time.deltaTime);
 			}
-			if (Input.GetMouseButtonDown(0))
+            //else
+            //{
+            //    Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), 0);
+            //    movement.Normalize();
+            //    movement *= movementspeed * Time.deltaTime;
+            //    transform.Translate(movement.x, 0f, movement.y);
+            //}
+
+            if (Input.GetMouseButtonDown(0))
 			{
 				//gameObject.GetComponent<Animator>().Play("Player Aim");
 				spriteRenderer.sprite = spriteArray[1];
 			}
+
 		}
 		else if (ball.isMoving == true)
         {

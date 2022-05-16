@@ -20,14 +20,28 @@ public class BallMovement : MonoBehaviour
         if (ball.isMoving == false)
         {
             movementspeed = 10f;
-            if (inputManager.GetKey(KeybindingActions.Left))
+            if (Input.GetKey(GameManager.GM.left))
             {
                 transform.Translate(Vector3.left * movementspeed * Time.deltaTime);
             }
-            if (inputManager.GetKey(KeybindingActions.Right))
+            //else
+            //{
+            //    Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), 0);
+            //    movement.Normalize();
+            //    movement *= movementspeed * Time.deltaTime;
+            //    transform.Translate(movement.x, 0f, movement.y);
+            //}
+            if (Input.GetKey(GameManager.GM.right))
             {
                 transform.Translate(Vector3.right * movementspeed * Time.deltaTime);
             }
+            //else
+            //{
+            //    Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), 0);
+            //    movement.Normalize();
+            //    movement *= movementspeed * Time.deltaTime;
+            //    transform.Translate(movement.x, 0f, movement.y);
+            //}
         }
         else if (ball.isMoving == true)
         {
@@ -35,12 +49,20 @@ public class BallMovement : MonoBehaviour
             {
                 transform.Translate(Vector3.zero * movementspeed * Time.deltaTime);
             }
+            //else
+            //{
+            //    transform.Translate(0f, 0f, 0f);
+            //}
             if (inputManager.GetKey(KeybindingActions.Right))
             {
                 transform.Translate(Vector3.zero * movementspeed * Time.deltaTime);
             }
+            //else
+            //{
+            //    transform.Translate(0f, 0f, 0f);
+            //}
         }
-	}
+    }
 
     void OnColliderEnter2D(Collider2D collider)
     {
