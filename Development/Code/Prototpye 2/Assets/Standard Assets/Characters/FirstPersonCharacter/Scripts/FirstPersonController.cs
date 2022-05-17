@@ -43,6 +43,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        float horizontal;
+        float vertical;
+
         // Use this for initialization
         private void Start()
         {
@@ -68,7 +71,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 // the jump state needs to read here to make sure it is not missed
                 if (!m_Jump)
                 {
-                    m_Jump = Input.GetButtonDown("Jump");
+                    if (GameManager.GM.keyboard == true)
+                        m_Jump = Input.GetKeyDown(GameManager.GM.jump);
+                    if (GameManager.GM.controller == true)
+                        m_Jump = Input.GetButtonDown("Jump"); 
                 }
 
                 if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
@@ -85,10 +91,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                 m_PreviouslyGrounded = m_CharacterController.isGrounded;
             }
-            else
-            {
-                Debug.Log(GameManager.GM.gameRunning);
-            }
+            //else
+            //{
+            //    Debug.Log(GameManager.GM.gameRunning);
+            //}
         }
 
 
@@ -212,15 +218,46 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void GetInput(out float speed)
         {
             // Read input
-            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+            if (GameManager.GM.controller == true)
+            {
+                horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
+                vertical = CrossPlatformInputManager.GetAxis("Vertical"); 
+            }
+
+            if (GameManager.GM.keyboard == true)
+            {
+                horizontal = 0;
+                if (Input.GetKey(GameManager.GM.left))
+                {
+                    horizontal -= 1;
+                }
+                if (Input.GetKey(GameManager.GM.right))
+                {
+                    horizontal += 1;
+                }
+
+                vertical = 0;
+                if (Input.GetKey(GameManager.GM.up))
+                {
+                    vertical += 1;
+                }
+                if (Input.GetKey(GameManager.GM.down))
+                {
+                    vertical -= 1;
+                }
+            }
+
 
             bool waswalking = m_IsWalking;
 
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
-            m_IsWalking = !Input.GetKey(GameManager.GM.walkOrRun);
+
+            if(GameManager.GM.keyboard == true)
+                m_IsWalking = !Input.GetKey(GameManager.GM.walkOrRun);
+            if(GameManager.GM.controller == true)
+                m_IsWalking = !Input.GetButtonDown("Running"); 
 #endif
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;

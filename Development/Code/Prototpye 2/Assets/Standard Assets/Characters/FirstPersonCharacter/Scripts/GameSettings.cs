@@ -24,6 +24,8 @@ public class GameSettings : MonoBehaviour
     
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+
         if (GameManager.GM.keyboard == true)
         {
             keyboardPanel.gameObject.SetActive(true);
@@ -125,9 +127,14 @@ public class GameSettings : MonoBehaviour
                 PlayerPrefs.SetString("Down", GameManager.GM.down.ToString());
                 break;
             case "shoot":
-                GameManager.GM.shoot = newKey;
-                buttonText.text = GameManager.GM.shoot.ToString();
-                PlayerPrefs.SetString("Shoot", GameManager.GM.shoot.ToString());
+                if (newKey == KeyCode.Tab) GameManager.GM.mouse = true;
+                else
+                {
+                    GameManager.GM.mouse = false;
+                    GameManager.GM.shoot = newKey;
+                    buttonText.text = GameManager.GM.shoot.ToString();
+                    PlayerPrefs.SetString("Shoot", GameManager.GM.shoot.ToString());
+                }
                 break;
             case "jump":
                 GameManager.GM.jump = newKey;

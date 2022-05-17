@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,11 +20,15 @@ public class GameManager : MonoBehaviour
     public KeyCode walkOrRun { get; set; }
 
     public bool gameRunning = true;
+    public bool reset = false;
 
     public GameObject pauseMenu;
 
+    public bool mouse = false;
+
     void Awake()
     {
+        Debug.Log(mouse);
         if (GM == null)
         {
             DontDestroyOnLoad(gameObject);
@@ -56,34 +61,38 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameRunning = true;
+        //Debug.Log(selectedToggle.isOn);
+        //selectedToggle.onValueChanged.AddListener(delegate
+        //{
+        //    MouseCheck(selectedToggle);
+        //});
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (reset)
         {
-            //Debug.LogWarning("Pausing");
-            gameRunning = false;
-            if (pauseMenu != null ) pauseMenu.SetActive(true);
-            Time.timeScale = 0f;
-            Cursor.lockState = CursorLockMode.None;
-            
+            ResetScene();
         }
-        //else
-        //{
-        //    if (pauseMenu == null) pauseMenu = GameObject.Find("Pause");
-        //    gameRunning = true;
-        //    if (pauseMenu != null) pauseMenu.SetActive(false);
-        //    Time.timeScale = 1f;
-        //    Cursor.lockState = CursorLockMode.Locked;
-        //}
-
-        //if(Input.GetKey(KeyCode.P))
-        //{
-        //    gameRunning = true;
-        //}
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (gameRunning)
+            {
+                //Debug.LogWarning("Pausing");
+                gameRunning = false;
+                if (pauseMenu != null) pauseMenu.SetActive(true);
+                Time.timeScale = 0f;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                gameRunning = true;
+                if (pauseMenu != null) pauseMenu.SetActive(false);
+                Time.timeScale = 1f;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
     }
 
     public void HandleInputData(int val)
@@ -100,12 +109,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void FlagForReset()
+    void ResetScene()
     {
-        if (pauseMenu == null) pauseMenu = GameObject.Find("Pause");
+        if (pauseMenu == null)
+        {
+            GameObject canvas = GameObject.Find("Canvas");
+
+            if (canvas != null)
+            {
+                Debug.Log("Found canvas");
+                pauseMenu = canvas.GetComponent<PauseMenuController>().pauseMenu;
+            }
+        }
+
+        pauseMenu.SetActive(false);
         gameRunning = true;
-        if (pauseMenu != null) pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = 1.0f;
         Cursor.lockState = CursorLockMode.Locked;
+        reset = false;
     }
 }

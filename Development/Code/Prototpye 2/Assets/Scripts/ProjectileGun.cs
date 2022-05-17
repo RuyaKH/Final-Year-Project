@@ -37,6 +37,8 @@ public class ProjectileGun : MonoBehaviour
 
     public Button backButton;
 
+    GameManager gameManager;
+
     private void Awake()
     {
         //make sure magazine is full
@@ -48,6 +50,8 @@ public class ProjectileGun : MonoBehaviour
     {
         backButton = backButton.GetComponent<Button>();
         backButton.onClick.AddListener(onBackButtonClick);
+
+        gameManager = GameObject.Find("GameManagerPersistent").GetComponent<GameManager>();
     }
 
     private void Update()
@@ -62,8 +66,24 @@ public class ProjectileGun : MonoBehaviour
 
     private void MyInput()
     {
-        if (allowButtonHold) shooting = Input.GetButton("Fire1");
-        else shooting = Input.GetButtonDown("Fire1");
+        if (gameManager.keyboard == true)
+        {
+            if (gameManager.mouse == true)
+            {
+                if (allowButtonHold) shooting = Input.GetButton("Fire1");
+                else shooting = Input.GetButtonDown("Fire1");
+            }
+            else if (gameManager.mouse == false)
+            {
+                if (allowButtonHold) shooting = Input.GetKey(gameManager.shoot);
+                else shooting = Input.GetKeyDown(gameManager.shoot);
+            }
+        }
+        if (gameManager.controller == true )
+        {
+            if (allowButtonHold) shooting = Input.GetButton("Fire1");
+            else shooting = Input.GetButtonDown("Fire1");
+        }
 
         //reloading
         if (Input.GetButtonDown("Reload") && bulletsLeft < magazineSize && !reloading)

@@ -22,7 +22,7 @@ public class MenuScript : MonoBehaviour
 
 	public void PlayGame() { //if play game button pressed then load the scene game amd destroy the menu music 
         gameManager = GameObject.Find("GameManagerPersistent");
-        gameManager.GetComponent<GameManager>().FlagForReset();
+        if (gameManager != null) gameManager.GetComponent<GameManager>().reset = true;
 		SceneManager.LoadScene("Game");
     }
 
