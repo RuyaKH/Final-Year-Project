@@ -1760,6 +1760,10 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0.2264151
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 2100625758}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
 --- !u!1 &2019391799
@@ -2136,6 +2140,7 @@ GameObject:
   - component: {fileID: 2100625764}
   - component: {fileID: 2100625765}
   - component: {fileID: 2100625766}
+  - component: {fileID: 2100625767}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2276,3 +2281,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   back: {fileID: 976981914}
+--- !u!114 &2100625767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100625758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e0984967e69dbd47b90b9745b066cbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyboard: 1
+  controller: 0

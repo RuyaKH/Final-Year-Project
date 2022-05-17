@@ -6,25 +6,27 @@ using System;
 
 public class CountScore : MonoBehaviour {
 
-	public Text scoreText;
-	[SerializeField]
-	public int scoreValue;
-	[SerializeField]
+	Text scoreText;
+	int scoreValue;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         //Set the score to zero
         GameObject score = GameObject.Find("ScoreValue");
         scoreText = score.GetComponent<Text>();
         DontDestroyOnLoad(gameObject);
-        Debug.Log(gameObject.name + " start");
+        //Debug.Log(gameObject.name + " start");
     }
 
 
     // Update is called once per frame
     void Update()
     {
-
+        if (scoreText == null)
+        {
+            GameObject score = GameObject.Find("ScoreValue");
+            scoreText = score.GetComponent<Text>();
+        }
     }
 
     //Alter the score

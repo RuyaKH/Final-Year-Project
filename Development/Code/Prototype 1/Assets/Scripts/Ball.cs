@@ -41,6 +41,8 @@ public class Ball : MonoBehaviour
             Debug.Log(physics.velocity);
             //Cursor.lockState = CursorLockMode.Confined;
         }
+
+
     }
 
     private Vector2 getMousePosition()
