@@ -16,7 +16,7 @@ public class CountScore : MonoBehaviour {
         //Set the score to zero
         GameObject score = GameObject.Find("ScoreValue");
         scoreText = score.GetComponent<Text>();
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         Debug.Log(gameObject.name + " start");
     }
 

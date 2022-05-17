@@ -10,25 +10,22 @@ public class MenuScript : MonoBehaviour
 	public Button settingsButton;
     public Button exitButton;
 
-    //public AudioSource menuMusic; //audio source that gets the background music for the menu
+    GameObject gameManager;
 
 	void Start () {
         //get components of the buttons
 		playButton = playButton.GetComponent<Button> ();
 		settingsButton = settingsButton.GetComponent<Button> ();
         exitButton = exitButton.GetComponent<Button>();
-        //menuMusic.Play();
+
 	}
 
 	public void PlayGame() { //if play game button pressed then load the scene game amd destroy the menu music 
+        gameManager = GameObject.Find("GameManagerPersistent");
+        gameManager.GetComponent<GameManager>().FlagForReset();
 		SceneManager.LoadScene("Game");
-        //Destroy(menuMusic);
-	}
+    }
 
-    //public void HighScore()  //could not get high score to work, button function still here for future updates
-    //{
-    //    SceneManager.LoadScene("HighScore");
-    //}
 
     public void GameSettings() //if options button pressed then load the scene options
     {

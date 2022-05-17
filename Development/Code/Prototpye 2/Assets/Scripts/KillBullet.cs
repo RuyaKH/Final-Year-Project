@@ -9,7 +9,7 @@ public class KillBullet : MonoBehaviour
     //trigger to check for 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log(collider.name);
+        //Debug.Log(collider.name);
         if (collider.tag == "enemy")
         {
             bullet.SetActive(false);

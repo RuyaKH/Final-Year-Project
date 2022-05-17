@@ -2,9 +2,12 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+//using TMPro;
 
 public class GameSettings : MonoBehaviour
 {
+    public Transform keyboardPanel;
+    public Transform controllerPanel;
     public Button leftKey;
     public Button rightKey;
     public Button upKey;
@@ -15,14 +18,25 @@ public class GameSettings : MonoBehaviour
     Event keyEvent;
     Text buttonText;
     KeyCode newKey;
+    //public TextMeshProUGUI output;
 
     bool waitingForKey;
     
     void Start()
     {
-        //menuPanel = transform.Find("Panel");
-        waitingForKey = false;
+        if (GameManager.GM.keyboard == true)
+        {
+            keyboardPanel.gameObject.SetActive(true);
+            controllerPanel.gameObject.SetActive(false);
+        }
+        else if (GameManager.GM.controller == true)
+        {
+            keyboardPanel.gameObject.SetActive(false);
+            controllerPanel.gameObject.SetActive(true);
+        }
 
+        waitingForKey = false;
+        
         leftKey.GetComponentInChildren<Text>().text = GameManager.GM.left.ToString();
         rightKey.GetComponentInChildren<Text>().text = GameManager.GM.right.ToString();
         upKey.GetComponentInChildren<Text>().text = GameManager.GM.up.ToString();
@@ -34,8 +48,25 @@ public class GameSettings : MonoBehaviour
 
     void Update()
     {
-
+        if (GameManager.GM.keyboard == true)
+        {
+            keyboardPanel.gameObject.SetActive(true);
+            controllerPanel.gameObject.SetActive(false);
+        }
+        else if (GameManager.GM.controller == true)
+        {
+            keyboardPanel.gameObject.SetActive(false);
+            controllerPanel.gameObject.SetActive(true);
+        }
     }
+
+    //void HandleInputData(int val)
+    //{
+    //    if(val == 0)
+    //    {
+    //        GameManager.GM.keyboard == true;
+    //    }
+    //}
 
     void OnGUI()
     {

@@ -15,7 +15,7 @@ public class Kill : MonoBehaviour
     //trigger to check for 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log(collider.name);
+        //Debug.Log(collider.name);
         if (collider.tag == "bullet")
         {
             cs.UpdateScoreValue(1);
