@@ -33,6 +33,7 @@ public class MenuScript : MonoBehaviour
     public void GameSettings() //if options button pressed then load the scene options
     {
         SceneManager.LoadScene("GameSettings");
+        //SaveManager.SaveUserData();
     }
 
     public void Exit() //if how to play button pressed then load the scene how to play

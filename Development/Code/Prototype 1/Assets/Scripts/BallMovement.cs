@@ -45,7 +45,7 @@ public class BallMovement : MonoBehaviour
         }
         else if (ball.isMoving == true)
         {
-            if (inputManager.GetKey(KeybindingActions.Left))
+            if (Input.GetKey(GameManager.GM.left))
             {
                 transform.Translate(Vector3.zero * movementspeed * Time.deltaTime);
             }
@@ -53,7 +53,7 @@ public class BallMovement : MonoBehaviour
             //{
             //    transform.Translate(0f, 0f, 0f);
             //}
-            if (inputManager.GetKey(KeybindingActions.Right))
+            if (Input.GetKey(GameManager.GM.right))
             {
                 transform.Translate(Vector3.zero * movementspeed * Time.deltaTime);
             }

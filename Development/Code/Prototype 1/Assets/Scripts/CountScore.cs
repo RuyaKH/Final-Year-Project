@@ -10,12 +10,38 @@ public class CountScore : MonoBehaviour {
 	int scoreValue;
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
         //Set the score to zero
         GameObject score = GameObject.Find("ScoreValue");
         scoreText = score.GetComponent<Text>();
         DontDestroyOnLoad(gameObject);
+        UpdateScoreText();
         //Debug.Log(gameObject.name + " start");
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) //if game over scene is loaded then update the score value and set it to game object text for game over scene, if menu loaded then destroy score
+    {
+        if (String.Equals(scene.name, "Game1", StringComparison.OrdinalIgnoreCase)) //if game over loaded
+        {
+            GameObject score = GameObject.Find("ScoreValue"); //find game object called PlayerScoreNum so it can be updated with the score value
+            scoreText = score.GetComponent<Text>(); //get the text for score
+            UpdateScoreText();
+        }
+
+        if (String.Equals(scene.name, "MainMenu", StringComparison.OrdinalIgnoreCase)) //if menu is loaded then destroy the game object so the score is restarted
+        {
+            Destroy(gameObject);
+        }
     }
 
 

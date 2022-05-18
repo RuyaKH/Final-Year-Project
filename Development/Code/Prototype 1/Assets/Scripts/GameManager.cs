@@ -5,20 +5,25 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager GM;
+    //public SaveObject so;
 
     public bool keyboard = true;
     public bool controller = false;
+    //public bool invert = false;
+    public bool yes = false;
+    public bool no = true;
+    public bool ballMouse = true;
+    public bool ballKeyboard = false;
 
-    public KeyCode jump { get; set; }
-    public KeyCode up { get; set; }
-    public KeyCode down { get; set; }
     public KeyCode left { get; set; }
     public KeyCode right { get; set; }
-    //public KeyCode shoot { get; set; }
+    public KeyCode ball { get; set; }
 
     void Awake()
     {
-        if(GM == null)
+        //SaveObject so = new SaveObject();
+
+        if (GM == null)
         {
             DontDestroyOnLoad(gameObject);
             GM = this;
@@ -28,12 +33,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        jump = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Jump", "Space"));
-        up = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Up", "W"));
-        down = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Down", "S"));
         left = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Left", "A"));
         right = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Right", "D"));
-        //shoot = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Shoot", "LCtrl"));
+        ball = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("BallDrag", "Space"));
+
+        //PlayerPrefs.Save();
+
+
+        //left = (KeyCode)System.Enum.Parse(typeof(KeyCode), LoadKeys("Left","A"));
     }
 
     // Start is called before the first frame update
@@ -47,4 +54,24 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    //public string SaveKeys(string saveKeyName, string saveKeyCodeString) 
+    //{
+    //    SaveObject so = new SaveObject();
+    //    so.keyName = saveKeyName;
+    //    so.keyCodeString = saveKeyCodeString;
+
+    //    return so.keyName;
+    //    return so.keyCodeString;
+    //}
+
+    //public string LoadKeys(string loadKeyName, string loadKeyCodeString) 
+    //{
+    //    SaveObject so = new SaveObject();
+    //    so.keyName = loadKeyName;
+    //    so.keyCodeString = loadKeyCodeString;
+
+    //    return so.keyName;
+    //    return so.keyCodeString;
+    //}
 }

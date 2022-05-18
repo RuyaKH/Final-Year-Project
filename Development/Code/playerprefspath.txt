@@ -1,0 +1,3 @@
+Computer\HKEY_CURRENT_USER\SOFTWARE\Unity\UnityEditor\DefaultCompany\WheelChairBasketBall
+
+player prefs folder
