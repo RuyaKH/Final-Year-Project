@@ -8,7 +8,7 @@ public class SaveManager : MonoBehaviour
     public static SaveManager sm;
 
     public static string directory = "/SaveData/";
-    public static string fileName = "MyData.txt";
+    public static string fileName = "MyData.json";
 
     public SaveObject so;
 
@@ -19,6 +19,12 @@ public class SaveManager : MonoBehaviour
         else
             Destroy(this);
         so = Load();
+
+        if (GameManager.GM != null)
+        {
+            GameManager.GM.Initialise();
+        }
+        //GameManager.GM.Initialise();
     }
 
     public static void Save()

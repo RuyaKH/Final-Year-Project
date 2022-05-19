@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public bool gameRunning = true;
     public bool reset = false;
     public bool mouse = false;
+    bool initialised = false;
 
     public GameObject pauseMenu;
 
@@ -41,9 +42,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    public void Initialise()
+    {
         keyboard = true;
         controller = false;
-        //mouse = true;
+        mouse = true;
 
         //jump = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Jump", "Space"));
         //up = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Up", "W"));
@@ -67,6 +72,8 @@ public class GameManager : MonoBehaviour
         if (pauseMenu != null) pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
+
+        initialised = true;
     }
 
     // Start is called before the first frame update
@@ -78,6 +85,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!initialised)
+        {
+            Initialise();
+        }
+
         if (reset)
         {
             ResetScene();
@@ -100,6 +112,7 @@ public class GameManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
+
     }
 
     public void HandleInputData(int val)

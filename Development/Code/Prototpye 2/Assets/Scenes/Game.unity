@@ -1779,6 +1779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1713539517}
   - component: {fileID: 1713539516}
+  - component: {fileID: 1713539518}
   m_Layer: 0
   m_Name: GameManagerPersistent
   m_TagString: Untagged
@@ -1802,11 +1803,11 @@ MonoBehaviour:
   load: {fileID: 0}
   keyboard: 0
   controller: 0
-  jump: 0
-  up: 0
-  down: 0
   left: 0
   right: 0
+  up: 0
+  down: 0
+  jump: 0
   shoot: 0
   walkOrRun: 0
   gameRunning: 1
@@ -1827,6 +1828,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1713539518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713539515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac476e034e4b01448bc79b270db3e5bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  so:
+    left: 97
+    right: 100
+    up: 119
+    down: 115
+    jump: 32
+    shoot: 306
+    walkOrRun: 304
 --- !u!1 &1748429372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,7 +1911,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1778536927
 RectTransform:
   m_ObjectHideFlags: 0
