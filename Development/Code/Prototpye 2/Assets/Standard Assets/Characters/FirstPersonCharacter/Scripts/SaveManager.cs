@@ -37,7 +37,7 @@ public class SaveManager : MonoBehaviour
         string fullPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + directory + fileName;
         SaveObject so = new SaveObject();
 
-        if(File.Exists(fullPath))
+        if (File.Exists(fullPath))
         {
             string json = File.ReadAllText(fullPath);
             so = JsonUtility.FromJson<SaveObject>(json);

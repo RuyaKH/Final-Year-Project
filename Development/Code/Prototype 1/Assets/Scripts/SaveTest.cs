@@ -17,11 +17,11 @@ public class SaveTest : MonoBehaviour
 
     public void SaveButton()
     {
-        SaveManager.Save(so);
+        //SaveManager.Save(so);
     }
 
     public void LoadButton()
     {
-        so = SaveManager.Load();
+        //so = SaveManager.Load();
     }
 }

@@ -1798,13 +1798,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663df19c574e416439b98d3f96f4ad2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  save: {fileID: 0}
+  load: {fileID: 0}
   keyboard: 0
   controller: 0
+  jump: 0
+  up: 0
+  down: 0
+  left: 0
+  right: 0
+  shoot: 0
+  walkOrRun: 0
   gameRunning: 1
   reset: 0
-  pauseMenu: {fileID: 1778536926}
   mouse: 0
-  selectedToggle: {fileID: 0}
+  pauseMenu: {fileID: 1778536926}
 --- !u!4 &1713539517
 Transform:
   m_ObjectHideFlags: 0
@@ -1882,7 +1890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1778536927
 RectTransform:
   m_ObjectHideFlags: 0

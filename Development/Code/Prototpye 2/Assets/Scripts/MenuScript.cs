@@ -18,7 +18,17 @@ public class MenuScript : MonoBehaviour
 		settingsButton = settingsButton.GetComponent<Button> ();
         exitButton = exitButton.GetComponent<Button>();
 
-	}
+        SaveManager.sm.so = SaveManager.Load();
+
+        GameManager.GM.left = SaveManager.sm.so.left;
+        GameManager.GM.right = SaveManager.sm.so.right;
+        GameManager.GM.up = SaveManager.sm.so.up;
+        GameManager.GM.down = SaveManager.sm.so.down;
+        GameManager.GM.jump = SaveManager.sm.so.jump;
+        GameManager.GM.shoot = SaveManager.sm.so.shoot;
+        GameManager.GM.walkOrRun = SaveManager.sm.so.walkOrRun;
+
+    }
 
 	public void PlayGame() { //if play game button pressed then load the scene game amd destroy the menu music 
         gameManager = GameObject.Find("GameManagerPersistent");

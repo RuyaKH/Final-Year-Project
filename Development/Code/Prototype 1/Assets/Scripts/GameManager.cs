@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager GM;
-    //public SaveObject so;
+
+    public Button save;
+    public Button load;
 
     public bool keyboard = true;
     public bool controller = false;
@@ -15,9 +18,13 @@ public class GameManager : MonoBehaviour
     public bool ballMouse = true;
     public bool ballKeyboard = false;
 
-    public KeyCode left { get; set; }
-    public KeyCode right { get; set; }
-    public KeyCode ball { get; set; }
+    //public KeyCode left { get; set; }
+    //public KeyCode right { get; set; }
+    //public KeyCode ball { get; set; }
+
+    public KeyCode left;
+    public KeyCode right;
+    public KeyCode ball;
 
     void Awake()
     {
@@ -33,20 +40,21 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        left = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Left", "A"));
-        right = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Right", "D"));
-        ball = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("BallDrag", "Space"));
+        //left = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Left", "A"));
+        //right = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Right", "D"));
+        //ball = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("BallDrag", "Space"));
 
-        //PlayerPrefs.Save();
+        left = SaveManager.sm.so.left;
+        right = SaveManager.sm.so.right;
+        ball = SaveManager.sm.so.ball;
 
-
-        //left = (KeyCode)System.Enum.Parse(typeof(KeyCode), LoadKeys("Left","A"));
+        no = true;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log(SaveManager.sm);
     }
 
     // Update is called once per frame
@@ -55,23 +63,4 @@ public class GameManager : MonoBehaviour
         
     }
 
-    //public string SaveKeys(string saveKeyName, string saveKeyCodeString) 
-    //{
-    //    SaveObject so = new SaveObject();
-    //    so.keyName = saveKeyName;
-    //    so.keyCodeString = saveKeyCodeString;
-
-    //    return so.keyName;
-    //    return so.keyCodeString;
-    //}
-
-    //public string LoadKeys(string loadKeyName, string loadKeyCodeString) 
-    //{
-    //    SaveObject so = new SaveObject();
-    //    so.keyName = loadKeyName;
-    //    so.keyCodeString = loadKeyCodeString;
-
-    //    return so.keyName;
-    //    return so.keyCodeString;
-    //}
 }

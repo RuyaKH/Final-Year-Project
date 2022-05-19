@@ -8,6 +8,7 @@ public class GameSettings : MonoBehaviour
 {
     public Transform keyboardPanel;
     public Transform controllerPanel;
+
     public Button leftKey;
     public Button rightKey;
     public Button upKey;
@@ -15,10 +16,12 @@ public class GameSettings : MonoBehaviour
     public Button shootKey;
     public Button jumpKey;
     public Button walkKey;
+
+    public Button shootMouse;
+
     Event keyEvent;
     Text buttonText;
     KeyCode newKey;
-    //public TextMeshProUGUI output;
 
     bool waitingForKey;
     
@@ -62,13 +65,27 @@ public class GameSettings : MonoBehaviour
         }
     }
 
-    //void HandleInputData(int val)
-    //{
-    //    if(val == 0)
-    //    {
-    //        GameManager.GM.keyboard == true;
-    //    }
-    //}
+    public void ShootMouse()
+    {
+        GameManager.GM.mouse = true;
+        Debug.Log("Shoot mouse");
+    }
+
+    public void ShootKeyboard()
+    {
+        GameManager.GM.mouse = false;
+        Debug.Log("Shoot keyboard");
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        Debug.Log(mode);
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        LoadButton();
+    }
 
     void OnGUI()
     {
@@ -107,47 +124,70 @@ public class GameSettings : MonoBehaviour
         switch(keyName)
         {
             case "left":
-                GameManager.GM.left = newKey;
-                buttonText.text = GameManager.GM.left.ToString();
-                PlayerPrefs.SetString("Left", GameManager.GM.left.ToString());
+                SaveManager.sm.so.left = newKey;
+                buttonText.text = SaveManager.sm.so.left.ToString();
+                //GameManager.GM.left = newKey;
+                //buttonText.text = GameManager.GM.left.ToString();
+                //PlayerPrefs.SetString("Left", GameManager.GM.left.ToString());
                 break;
             case "right":
-                GameManager.GM.right = newKey;
-                buttonText.text = GameManager.GM.right.ToString();
-                PlayerPrefs.SetString("Right", GameManager.GM.right.ToString());
+                SaveManager.sm.so.right = newKey;
+                buttonText.text = SaveManager.sm.so.right.ToString();
                 break;
             case "up":
-                GameManager.GM.up = newKey;
-                buttonText.text = GameManager.GM.up.ToString();
-                PlayerPrefs.SetString("Up", GameManager.GM.up.ToString());
+                SaveManager.sm.so.up = newKey;
+                buttonText.text = SaveManager.sm.so.up.ToString();
                 break;
             case "down":
-                GameManager.GM.down = newKey;
-                buttonText.text = GameManager.GM.down.ToString();
-                PlayerPrefs.SetString("Down", GameManager.GM.down.ToString());
+                SaveManager.sm.so.down = newKey;
+                buttonText.text = SaveManager.sm.so.down.ToString();
                 break;
             case "shoot":
-                if (newKey == KeyCode.Tab) GameManager.GM.mouse = true;
-                else
-                {
-                    GameManager.GM.mouse = false;
-                    GameManager.GM.shoot = newKey;
-                    buttonText.text = GameManager.GM.shoot.ToString();
-                    PlayerPrefs.SetString("Shoot", GameManager.GM.shoot.ToString());
-                }
+                SaveManager.sm.so.shoot = newKey;
+                buttonText.text = SaveManager.sm.so.shoot.ToString();
                 break;
             case "jump":
-                GameManager.GM.jump = newKey;
-                buttonText.text = GameManager.GM.jump.ToString();
-                PlayerPrefs.SetString("Jump", GameManager.GM.jump.ToString());
+                SaveManager.sm.so.jump = newKey;
+                buttonText.text = SaveManager.sm.so.jump.ToString();
                 break;
             case "walkOrRun":
-                GameManager.GM.walkOrRun = newKey;
-                buttonText.text = GameManager.GM.walkOrRun.ToString();
-                PlayerPrefs.SetString("Walk/Run", GameManager.GM.walkOrRun.ToString());
+                SaveManager.sm.so.walkOrRun = newKey;
+                buttonText.text = SaveManager.sm.so.walkOrRun.ToString();
                 break;
         }
 
         yield return null;
+    }
+
+    public void LoadButton()
+    {
+        SaveManager.sm.so = SaveManager.Load();
+
+        SaveToGameManager();
+
+        leftKey.GetComponentInChildren<Text>().text = GameManager.GM.left.ToString();
+        rightKey.GetComponentInChildren<Text>().text = GameManager.GM.right.ToString();
+        upKey.GetComponentInChildren<Text>().text = GameManager.GM.up.ToString();
+        downKey.GetComponentInChildren<Text>().text = GameManager.GM.down.ToString();
+        jumpKey.GetComponentInChildren<Text>().text = GameManager.GM.jump.ToString();
+        shootKey.GetComponentInChildren<Text>().text = GameManager.GM.shoot.ToString();
+        walkKey.GetComponentInChildren<Text>().text = GameManager.GM.walkOrRun.ToString();
+    }
+
+    public void SaveButton()
+    {
+        SaveToGameManager();
+        SaveManager.Save();
+    }
+
+    void SaveToGameManager()
+    {
+        GameManager.GM.left = SaveManager.sm.so.left;
+        GameManager.GM.right = SaveManager.sm.so.right;
+        GameManager.GM.up = SaveManager.sm.so.up;
+        GameManager.GM.down = SaveManager.sm.so.down;
+        GameManager.GM.jump = SaveManager.sm.so.jump;
+        GameManager.GM.shoot = SaveManager.sm.so.shoot;
+        GameManager.GM.walkOrRun = SaveManager.sm.so.walkOrRun;
     }
 }

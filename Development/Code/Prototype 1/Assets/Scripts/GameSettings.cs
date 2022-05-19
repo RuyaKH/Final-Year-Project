@@ -64,6 +64,17 @@ public class GameSettings : MonoBehaviour
         Debug.Log("BallKeyboard");
     }
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        Debug.Log(mode);
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        LoadButton();
+    }
+
     void OnGUI()
     {
         keyEvent = Event.current;
@@ -101,23 +112,43 @@ public class GameSettings : MonoBehaviour
         switch(keyName)
         {
             case "left":
-                GameManager.GM.left = newKey;
-                buttonText.text = GameManager.GM.left.ToString();
-                PlayerPrefs.SetString("Left", GameManager.GM.left.ToString());
-                //GameManager.GM.SaveKeys("Left", GameManager.GM.left.ToString());
+                SaveManager.sm.so.left = newKey;
+                buttonText.text = SaveManager.sm.so.left.ToString();
+                //GameManager.GM.left = newKey;
+                //buttonText.text = GameManager.GM.left.ToString();
+                //PlayerPrefs.SetString("Left", GameManager.GM.left.ToString());
                 break;
             case "right":
-                GameManager.GM.right = newKey;
-                buttonText.text = GameManager.GM.right.ToString();
-                PlayerPrefs.SetString("Right", GameManager.GM.right.ToString());
+                SaveManager.sm.so.right = newKey;
+                buttonText.text = SaveManager.sm.so.right.ToString();
                 break;
             case "ball":
-                GameManager.GM.ball = newKey;
-                buttonText.text = GameManager.GM.ball.ToString();
-                PlayerPrefs.SetString("BallDrag", GameManager.GM.ball.ToString());
+                SaveManager.sm.so.ball = newKey;
+                buttonText.text = SaveManager.sm.so.ball.ToString();
                 break;
         }
 
         yield return null;
+    }
+
+    public void LoadButton()
+    {
+        SaveManager.sm.so = SaveManager.Load();
+
+        GameManager.GM.left = SaveManager.sm.so.left;
+        GameManager.GM.right = SaveManager.sm.so.right;
+        GameManager.GM.ball = SaveManager.sm.so.ball;
+
+        leftKey.GetComponentInChildren<Text>().text = GameManager.GM.left.ToString();
+        rightKey.GetComponentInChildren<Text>().text = GameManager.GM.right.ToString();
+        ballKey.GetComponentInChildren<Text>().text = GameManager.GM.ball.ToString();
+    }
+
+    public void SaveButton()
+    {
+        GameManager.GM.left = SaveManager.sm.so.left;
+        GameManager.GM.right = SaveManager.sm.so.right;
+        GameManager.GM.ball = SaveManager.sm.so.ball;
+        SaveManager.Save(); 
     }
 }

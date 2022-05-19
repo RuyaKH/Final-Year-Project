@@ -4,10 +4,8 @@ using UnityEngine;
 public class SaveObject
 {
 
-    public KeyCode left;
-    public KeyCode right;
-    public KeyCode ball;
-
-
+    public KeyCode left = KeyCode.A;
+    public KeyCode right = KeyCode.D;
+    public KeyCode ball = KeyCode.Space;
 
 }
