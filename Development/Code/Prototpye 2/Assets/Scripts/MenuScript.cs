@@ -18,6 +18,8 @@ public class MenuScript : MonoBehaviour
 		settingsButton = settingsButton.GetComponent<Button> ();
         exitButton = exitButton.GetComponent<Button>();
 
+        //gameManager = GameObject.Find("GameManagerPersistent");
+
         SaveManager.sm.so = SaveManager.Load();
 
         GameManager.GM.left = SaveManager.sm.so.left;

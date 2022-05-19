@@ -2871,7 +2871,7 @@ MonoBehaviour:
   load: {fileID: 95309721}
   keyboard: 1
   controller: 0
-  left: 0
+  left: 263
   right: 0
   up: 0
   down: 0
