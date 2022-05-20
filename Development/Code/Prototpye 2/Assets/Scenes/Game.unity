@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.6415094, g: 0.45351818, b: 0.43271625, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 3fe1b42bc11178342a325f99d12f0025, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 8ccf313b31495ae41b2a22d4e47b8784, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.54185706, g: 0.49281156, b: 0.36643398, a: 1}
+  m_IndirectSpecularColor: {r: 0.26607308, g: 0.24944758, b: 0.2330333, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -364,6 +364,7 @@ GameObject:
   - component: {fileID: 200150305}
   - component: {fileID: 200150307}
   - component: {fileID: 200150306}
+  - component: {fileID: 200150308}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -387,7 +388,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -142, y: -32}
+  m_AnchoredPosition: {x: -200, y: -32}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &200150306
@@ -432,6 +433,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200150304}
   m_CullTransparentMesh: 1
+--- !u!114 &200150308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200150304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &399099495
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +633,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.10849059, b: 0.1837809, a: 1}
+  m_Color: {r: 1, g: 0.11764706, b: 0.11764706, a: 1}
   m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
@@ -663,8 +679,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.9362428e+31, y: 2.0590528e-10, z: 0.000000053407707,
-    w: 6.482454e-10}
+  m_BoundingSphereOverride: {x: 1.9362428e+31, y: 6e-44, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -676,13 +691,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.74668884, y: -0.6264553, z: 0.02880451, w: 0.22176544}
+  m_LocalRotation: {x: 0.7071068, y: -0.7071068, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 18.94, z: 40.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 158.453, y: 14.623993, z: 82.789}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 90}
 --- !u!1 &774143264
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,6 +788,7 @@ GameObject:
   - component: {fileID: 791897642}
   - component: {fileID: 791897644}
   - component: {fileID: 791897643}
+  - component: {fileID: 791897645}
   m_Layer: 5
   m_Name: Reload done
   m_TagString: Untagged
@@ -796,7 +812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 123, y: -98}
+  m_AnchoredPosition: {x: 113, y: -45}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &791897643
@@ -841,6 +857,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791897641}
   m_CullTransparentMesh: 1
+--- !u!114 &791897645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791897641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &885151779
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,6 +883,7 @@ GameObject:
   - component: {fileID: 885151780}
   - component: {fileID: 885151782}
   - component: {fileID: 885151781}
+  - component: {fileID: 885151783}
   m_Layer: 5
   m_Name: ScoreValue
   m_TagString: Untagged
@@ -875,7 +907,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 21, y: -32}
+  m_AnchoredPosition: {x: -37, y: -32}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &885151781
@@ -920,6 +952,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885151779}
   m_CullTransparentMesh: 1
+--- !u!114 &885151783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885151779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!850595691 &929747054
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -2690,7 +2737,7 @@ MonoBehaviour:
   cube: {fileID: 2050011703}
   centre: {x: 5, y: 5, z: 15}
   size: {x: 50, y: 10, z: 50}
-  spawnNo: 7
+  spawnNo: 10
 --- !u!114 &2100625765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2705,6 +2752,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 885151781}
   scoreValue: 0
+  skyLight: {fileID: 705507994}
+  scoreValueCol: 10
+  scoreValueRot: 2.5
+  colMin: 30
+  rotMin: 180
+  rotMax: 90
 --- !u!114 &2100625766
 MonoBehaviour:
   m_ObjectHideFlags: 0
