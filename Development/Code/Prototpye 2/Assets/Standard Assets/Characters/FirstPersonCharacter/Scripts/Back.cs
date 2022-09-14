@@ -21,6 +21,7 @@ public class Back : MonoBehaviour
 
     public void BackMain()
     {
+        Cursor.visible = true;
         SceneManager.LoadScene("Menu");
     }
 }
